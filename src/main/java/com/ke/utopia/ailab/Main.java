@@ -14,15 +14,12 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) {
-        int[] ints = {1, 2, 3};
-        int[] ints1 = {2, 1, 3};
-        List<Integer> list = Arrays.stream(ints).boxed().toList();
 
-        List<Integer> list1 = Arrays.stream(ints1).boxed().toList();
+        System.out.println('A'-'a');
 
-        List<List<Integer>> result = new ArrayList<>();
-        result.add(list);
-        System.out.println(result.contains(list1));
+        System.out.println('z'-'A');
+
+
 
 
 
