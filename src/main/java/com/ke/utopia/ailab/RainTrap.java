@@ -26,7 +26,7 @@ public class RainTrap {
 
 
     public static void main(String[] args) {
-        int[] nums = new int[]{0,1,0,2,1,0,1,3,2,1,2,1};
+        int[] nums = new int[]{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
 
         int trap = dynamicProgrammingTrap(nums);
         System.out.println(trap);
@@ -124,8 +124,8 @@ public class RainTrap {
         int sum = 0;
 
 
-        for (int i = 1; i < height.length-1; i++) {
-            sum+=  Math.max((Math.min(leftMaxHeight[i], rightMaxHeight[i])-height[i]), 0) ;
+        for (int i = 1; i < height.length - 1; i++) {
+            sum += Math.max((Math.min(leftMaxHeight[i], rightMaxHeight[i]) - height[i]), 0);
         }
 
         return sum;
