@@ -44,8 +44,8 @@ import java.util.stream.Collectors;
 public class ThreeSum {
 
     public static void main(String[] args) {
-        int[] nums = new int[]{-2,0,1,1,2};
-        List<List<Integer>> r = threeSum(nums);
+        int[] nums = new int[]{-2, 0, 1, 1, 2};
+        List<List<Integer>> r = threeSum_1(nums);
         System.out.println(r);
 
     }
@@ -70,8 +70,8 @@ public class ThreeSum {
                     result.add(Arrays.asList(nums[first], nums[left], nums[right]));
                     left++;
                     right--;
-                    while (left < right && nums[left]==nums[left-1]) left++;
-                    while (right > left && nums[right]==nums[right+1]) right--;
+                    while (left < right && nums[left] == nums[left - 1]) left++;
+                    while (right > left && nums[right] == nums[right + 1]) right--;
 
                 } else if (nums[left] + nums[right] < target) {
                     // 说明不够
@@ -84,5 +84,40 @@ public class ThreeSum {
         }
 
         return result;
+    }
+
+
+    public static List<List<Integer>> threeSum_1(int[] nums) {
+
+        List<List<Integer>> array = new ArrayList<>();
+
+        Arrays.sort(nums);
+
+        int length = nums.length;
+
+
+        for (int i = 0; i < length; i++) {
+            int temp = nums[i];
+            int target = -temp;
+            // 转化成从 [i+1, length]的两数之和=target，有序case可以用双指针
+
+            int left = i + 1;
+            int right = length - 1;
+            while (left < right) {
+                if (nums[left] + nums[right] == target) {
+                    List<Integer> list = Arrays.asList(nums[i], nums[left], nums[right]);
+                    array.add(list);
+
+                }
+                while (nums[left] + nums[right] < target || nums[left] == nums[left+1] ) {
+                    left++;
+                }
+                while(nums[left] + nums[right] > target || nums[right] == nums[right-1]){
+                    right--;
+                }
+            }
+        }
+
+        return array.stream().distinct().toList();
     }
 }
